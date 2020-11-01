@@ -2,5 +2,16 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  - init: npm install && npm run build
-    command: npm run start
+  - init: npm install && npm run db:seed
+    name: Server Client
+  - openMode: split-right
+    command: npm run dev:server
+  - openIn: left
+    command: npm run dev:client
+
+# Ports to expose on workspace startup (optional)
+ports:
+  - port: 8080
+  - port: 5432
+    onOpen: open-preview
+
