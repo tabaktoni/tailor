@@ -3,11 +3,13 @@ image:
 
 tasks:
   - init: npm install && npm run db:seed
-    name: Server Client
+    name: Init
   - openMode: split-right
     command: npm run dev:server
-  - openIn: left
+    name: Server
+  - openIn: bottom
     command: npm run dev:client
+    name: Client
 
 # Ports to expose on workspace startup (optional)
 ports:
